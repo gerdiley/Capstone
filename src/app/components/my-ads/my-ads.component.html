@@ -1,0 +1,33 @@
+
+
+<h1>My Ads</h1>
+  <!-- cards -->
+
+<div class="container card-container mt-2">
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-12 " *ngFor="let item of ads">
+      <div class="card card-body h-100">
+      <div class="d-flex align-items-center username-container">
+        <img class="w-25 rounded-circle" src="{{item.user.profile.img}}" alt="">
+        <p class="username-link m-0">
+          <a href="#" [routerLink]="['/profile/', item.user.username]"
+            *ngIf="item.user.fullname">{{item.user.username}}</a>
+        </p>
+      </div>
+        <img src="https://picsum.photos/200" alt="Photo">
+        <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
+        <p class="card-text">{{item.category | lowercase}}</p>
+        <p class="card-text">
+          <small class="text-muted">{{item.expirationDate | date:'fullDate'}}</small>
+        </p>
+        <p class="card-text">
+
+          <button type="button" class="btn" [routerLink]="['/edit-ad', item.id]"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button type="button" class="btn ms-2" (click)="deleteAd(item.id)"><i class="fa-sharp fa-solid fa-trash"></i></button>
+
+        <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
+      </div>
+    </div>
+  </div>
+</div>

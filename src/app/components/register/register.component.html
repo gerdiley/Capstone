@@ -1,0 +1,22 @@
+<h1 class="text-center m-3">Sign Up</h1>
+<div class="register container-fluid d-flex justify-content-center align-items-center">
+  <form class="form" #form = "ngForm" (ngSubmit)="onSubmit(form)">
+    <mdb-form-control>
+      <input mdbInput type="text" id="form1" class="form-control mt-2" fullname required ngModel name="fullname" />
+      <label mdbLabel class="form-label" for="form1">Nome ex(Mario Rossi)</label>
+    </mdb-form-control>
+    <mdb-form-control>
+      <input mdbInput type="text" id="form1" class="form-control mt-2" username required ngModel name="username" />
+      <label mdbLabel class="form-label" for="form1">Username</label>
+    </mdb-form-control>
+    <mdb-form-control>
+      <input mdbInput type="text" id="form1" class="form-control mt-2" email required ngModel name="email" />
+      <label mdbLabel class="form-label" for="form1">Email</label>
+    </mdb-form-control>
+    <mdb-form-control>
+      <input mdbInput type="password" id="form1" class="form-control mt-2" password required ngModel name="password" />
+      <label mdbLabel class="form-label" for="form1">Password</label>
+    </mdb-form-control>
+    <button class="btn btn-primary mt-2 w-100" type="submit">Sign Up</button>
+  </form>
+</div>

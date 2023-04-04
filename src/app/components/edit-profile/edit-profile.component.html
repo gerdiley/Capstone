@@ -1,0 +1,29 @@
+<h1 class="text-center m-3">Edit Profile</h1>
+<div class="add container-fluid d-flex justify-content-center align-items-center">
+  <form class="form" #form="ngForm" (ngSubmit)="updateProfile(form)" *ngIf="userDetails">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="usernmae" placeholder="e.g. mrossi" name="username" [ngModel]="userDetails.username"  >
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="e.g. example@example.com" name="email" [ngModel]="userDetails.email"  >
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="city" placeholder="" name="city" [ngModel]="userDetails.address.city"  >
+    </div>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input type="text" class="form-control" id="street" placeholder="" name="street" [ngModel]="userDetails.address.street"  >
+    </div>
+    <div class="form-group">
+      <label for="postalCode">Postal Code</label>
+      <input type="text" class="form-control" id="postalCode" placeholder="" name="postalCode" [ngModel]="userDetails.address.postalCode"  >
+    </div>
+    <label for="formFileLg" class="form-label">Image file</label>
+    <input class="form-control form-control-lg" id="formFile" type="file" (change)="upload($event)" />
+    <button class="btn btn-primary mt-2 w-100" type="submit" [disabled]="clicked">Publish</button>
+  </form>
+</div>

@@ -1,0 +1,91 @@
+// goals section
+
+.goals{
+  background-color: #f2f9f8;
+}
+
+.container-fluid{
+
+}
+.goals .icon-box {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+// goals section
+.goals .icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.goals .icon i {
+  color: #70b9b0;
+  font-size: 42px;
+}
+
+.goals .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.goals .title a {
+  color: #343a40;
+  transition: 0.3s;
+}
+
+.goals .icon-box:hover .title a {
+  color: #70b9b0;
+}
+
+.goals .description {
+  line-height: 24px;
+  font-size: 14px;
+}
+
+
+// Contact section
+
+#formFile:focus, .form-control:focus{
+  color: #505a59 !important;
+  background-color: #FFF !important;
+  border-color: #70b9b0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
+}
+
+.btn-submit{
+  background: #70b9b0;
+  border: 0;
+  border-radius: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  max-width: 40%;
+}
+
+.btn-submit:hover{
+  background: #92cac3;
+}
+
+.address{
+  i{
+    color: #70b9b0;
+    font-size: 1.5rem;
+  }
+}
+.title{
+  color: #70b9b0;
+}
+.map {
+  padding: 0;
+  margin-bottom: -10px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 380px;
+}

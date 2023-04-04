@@ -1,0 +1,58 @@
+.recipient{
+ .badge{
+  background-color: rgb(114, 119, 123);
+ }
+}
+
+.messages{
+  // width: 80vw;
+  height: 80vh;
+  overflow: scroll;
+  margin: 0 auto;
+  max-width: 70%  ;
+}
+
+.badge{
+  background-color: #416f6c;
+  font-style: normal !important;
+  font-size: small !important;
+  max-width: 300px;
+  word-wrap: break-word;
+  height: auto;
+}
+
+.btn{
+  background: #70b9b0;
+  border: 0;
+  border-radius: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.btn:hover{
+  background: #92cac3;
+}
+
+.form{
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.form-control:focus{
+  color: #505a59 !important;
+  background-color: #FFF !important;
+  border-color: #70b9b0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
+}
+.messages::-webkit-scrollbar-track{
+  background: #fff;
+}
+.messager::-webkit-scrollbar-thumb{
+  background: #fff;
+}
+.messages::-webkit-scrollbar{
+  height: 10px;
+}

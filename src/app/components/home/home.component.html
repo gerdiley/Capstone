@@ -1,0 +1,138 @@
+<!-- carousel -->
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-4 " data-mdb-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active first-carousel-item">
+      <!-- <img src="https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729_1280.jpg" class="d-block w-100"
+        alt="Wild Landscape" /> -->
+      <div class="mask" style="background-color: rgba(112, 185, 176, 0.85)"></div>
+      <div class="carousel-caption mb-5">
+        <h1 class="mb-4">
+          Welcome to riCibo
+        </h1>
+
+        <p>
+          <strong>The app against food waste</strong>
+        </p>
+
+        <p class="mb-4 d-none d-sm-block">
+          Share your food and cooking utensils with your neighbors!
+        </p>
+
+        <button target="_blank" [routerLink]="['/add']" class="btn btn-lg">Share a Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- tops carousel -->
+
+<div class="section-title m-5">
+  <h1 class="text-center display-6">Most popular</h1>
+</div>
+<app-slider-top></app-slider-top>
+
+
+
+
+<!-- CALL TO ACTION -->
+<!-- ======= Call To Action Section ======= -->
+<section class="call-to-action mt-5">
+  <div class="container">
+
+    <div class="text-center">
+      <h3>Join our community</h3>
+      <p> Join our food sharing community today and start spreading joy and connection through the love of food! <br>
+        Together, let's make the world a happier and more delicious place.
+      </p>
+      <a class="cta-btn" href="#" [routerLink]="['/about']">Our Goals</a>
+    </div>
+
+  </div>
+</section><!-- End Call To Action Section -->
+
+<!-- PRODUCTS -->
+
+<section>
+  <div class="section-title m-5">
+    <h1 class="text-center display-6">Products</h1>
+  </div>
+
+
+  <!-- FILTERS -->
+  <div class="container portfolio">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <ul id="portfolio-flters">
+          <li (click)="getData(0)">All</li>
+          <li (click)="getFood('FOOD')">Food</li>
+          <li (click)="getFood('NONFOOD')">Non-Food</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- BARRA DI RICERCA -->
+  <div class="d-flex justify-content-center align-items-center search-container">
+    <form class="form d-flex input-group w-auto justify-content-center m-4" #form1="ngForm"
+      (ngSubmit)="onSubmit(form1)">
+      <input id="searchBar" type="search" class="form-control border rounded shadow" placeholder="Search"
+        aria-label="Search" aria-describedby="search-addon" (input)="onSubmit2($event)" name="search" search ngModel />
+
+      <!-- <button type="submit" class="input-group-text border rounded ms-1 shadow searchIcon" id="search-addon">
+        <i class="fas fa-search"></i>
+      </button> -->
+    </form>
+    <div>
+      <button type="button" class="btn btn-floating ms-1 shadow search-icon" [routerLink]="['/add']" id="addIcon">
+        <i class="fa-solid fa-plus" style="line-height: 37px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="ad.length == 0" class="alert alert-danger w-50 p-1 text-center" role="alert" id="alertNoData">
+    No results!
+  </div>
+
+
+  <!-- cards -->
+
+  <div class="container card-container mt-2 mb-4">
+
+    <div class="row column-gap">
+      <div class="col-sm-6 col-md-4 col-lg-3 col-12 " *ngFor="let item of ad">
+        <div class="card card-body h-100">
+          <div class="d-flex align-items-center username-container my-2">
+            <img class="w-25 rounded-circle me-1 img" src="{{item.user.profile.img}}" alt="">
+            <p class="username-link m-0">
+              <a href="#" [routerLink]="['/profile/', item.user.username]"
+                *ngIf="item.user.fullname">{{item.user.username}}</a>
+            </p>
+          </div>
+          <img src="{{item.img}}" alt="Photo">
+          <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
+          <p class="card-text">
+            <span class="badge badge-success">{{item.category | lowercase}}</span>
+          </p>
+          <p class="card-text" *ngIf="item.expirationDate">
+            <small class="text-muted">Expiration date: <br>{{item.expirationDate | date:'fullDate'}}</small>
+          </p>
+          <p class="card-text">
+            <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="..." *ngIf="pageSelector">
+    <ul class="pagination pagination-sm justify-content-center">
+      <li id="page-selector" class="page-item" aria-current="page"
+        *ngFor="let item of [].constructor(pageData?.totalPages); let i = index">
+        <span class="page-link" (click)="getData(i)">
+          {{i + 1}}
+        </span>
+      </li>
+    </ul>
+  </nav>
+</section>

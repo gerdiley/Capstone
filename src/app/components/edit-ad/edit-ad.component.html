@@ -1,0 +1,31 @@
+<h1 class="text-center m-3 display-6">Edit Ad</h1>
+<div class="add container-fluid d-flex justify-content-center align-items-center mb-3">
+  <form class="form" #form = "ngForm" (ngSubmit)="editAd(form)">
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="e.g. Salad" name="title" [ngModel]="preAd.title">
+    </div>
+    <div class="form-group">
+      <label for="title">Expiration date (if it is food)</label>
+      <input type="date" class="form-control" id="title" placeholder=" e.g. 01-03-2023" name="expirationDate" [ngModel]="preAd.expirationDate">
+    </div>
+    <div class="form-group">
+      <label for="title">Description</label>
+      <textarea type="text" class="form-control" id="title" placeholder=" e.g. fresh salad, brand" name="description" [ngModel]="preAd.description"> </textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select class="form-select form-control" aria-label="Default select example" name="category" [ngModel]="preAd.category">
+        <option selected value="FOOD">Food</option>
+        <option value="NONFOOD">Non-Food</option>
+      </select>
+    </div>
+
+    <label for="formFileLg" class="form-label">Image file</label>
+    <input class="form-control form-control-lg" id="formFile" type="file" (change)="upload($event)" />
+    <button class="btn btn-primary mt-2 w-100" type="submit">Publish</button>
+  </form>
+
+</div>

@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+  color: #43aea0;
+}
+
+a:hover {
+  color: #00d3b8;
+  text-decoration: none;
+}
+
+h1,
+h2{
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+

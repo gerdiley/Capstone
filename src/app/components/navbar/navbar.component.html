@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <!-- Container wrapper -->
+  <div class="container ">
+    <!-- Navbar brand -->
+    <a class="navbar-brand me-2" [routerLink]="['/home']" href="#">
+      riCibo
+    </a>
+
+    <li mdbDropdown class="nav-item dropdown me-3 me-lg-1 d-lg-none d-block ms-auto" *ngIf="islogged()">
+      <a (click)="getNotification()"
+        class="nav-link dropdown-toggle hidden-arrow"
+
+        id="navbarDropdownMenuLink"
+        role="button"
+        mdbDropdownToggle
+        aria-expanded="false"
+      >
+        <i class="fas fa-bell fa-lg"></i>
+        <span class="badge rounded-pill badge-notification bg-danger" *ngIf="notifications.length > 0">{{notifications.length}}</span>
+      </a>
+      <ul
+        mdbDropdownMenu
+        class="dropdown-menu dropdown-menu-end"
+        aria-labelledby="navbarDropdownMenuLink"
+      >
+      <li *ngFor="let item of notifications">
+        <a class="dropdown-item" [routerLink]="['/messages', item.message.sender.id]" (click)="readNotification(item.id)" (click)="getNotification()">{{item.recipient.username}}: {{item.message.text}}</a>
+      </li>
+
+      </ul>
+    </li>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" (click)="buttonsNav.toggle()" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarButtonsExample" mdbCollapse #buttonsNav="mdbCollapse">
+
+
+      <div class=" d-flex align-items-center">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+          <li class="nav-item" *ngIf="islogged()" >
+            <a class="nav-link" href="#" [routerLink]="['/about']" *ngIf="user">About Us</a>
+          </li>
+          <li class="nav-item" *ngIf="isAdmin() && islogged()" routerLink="/dashboard">
+            <a class="nav-link" style="cursor: pointer;" *ngIf="isAdmin()">Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="islogged()">
+            <a class="nav-link d-sm-flex align-items-sm-center" *ngIf="user">
+              <img src="" class="rounded-circle" height="22" alt="" loading="lazy" />
+              <a [routerLink]="['/profile/', username]" class="d-sm-block"
+                *ngIf="(username$ | async) as username"><i class="fa-regular fa-user"></i> {{username}}</a>
+            </a>
+          </li>
+          <!-- dropdown -->
+          <li mdbDropdown class="nav-item dropdown me-3 me-lg-1 d-none d-lg-block" *ngIf="islogged()">
+            <a (click)="getNotification()"
+              class="nav-link dropdown-toggle hidden-arrow"
+
+              id="navbarDropdownMenuLink"
+              role="button"
+              mdbDropdownToggle
+              aria-expanded="false"
+            >
+              <i class="fas fa-bell fa-lg"></i>
+              <span class="badge rounded-pill badge-notification bg-danger" *ngIf="notifications.length > 0">{{notifications.length}}</span>
+            </a>
+            <ul
+              mdbDropdownMenu
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+            <li *ngFor="let item of notifications">
+              <a class="dropdown-item" [routerLink]="['/messages', item.message.sender.id]" (click)="readNotification(item.id)" (click)="getNotification()">{{item.recipient.username}}: {{item.message.text}}</a>
+            </li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item" *ngIf="islogged()"><button (click)="logout()" type="button"
+              class="btn btn-outline-danger logout px-3 me-2" [routerLink]="['/login']">
+              Logout
+            </button></li>
+          <li class="nav-item" *ngIf="!islogged()"><button type="button" class="btn  login px-3 me-2"
+              [routerLink]="['/login']">
+              Login
+            </button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+
+
+<!-- ======= Header ======= -->

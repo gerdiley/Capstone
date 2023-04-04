@@ -1,0 +1,196 @@
+
+<h1 class="text-center m-5 display-6">Profile</h1>
+<div class="container">
+  <div class="row" *ngIf="user?.profile">
+    <div class="col-sm-12 col-md-4 profile-col text-center mb-3">
+        <img src="{{user.profile.img}}" alt="profile-img" style="max-width: 200px;">
+      <p>{{user.fullname}}</p>
+      <button type="button" class="btn btn-outline-primary ms-1 edit-profile-btn" *ngIf="checkLogged()"
+              [routerLink]="['/edit-profile', user.id]"><i class="fa-regular fa-pen-to-square"></i></button>
+      <button type="button" class="btn btn-outline-primary ms-1 edit-profile-btn" *ngIf="!checkLogged()"
+              [routerLink]="['/messages', user.id]">Contatta</button>
+    </div>
+    <div class="col profile-col2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-3 span">
+              <p class="mb-0">Username</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{user.username}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3 span">
+              <p class="mb-0">Email</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{user.email}}</p>
+            </div>
+          </div>
+          <hr *ngIf="starAverage">
+          <div class="row" *ngIf="starAverage">
+            <div class="col-sm-3 span">
+              <p class="mb-0">Stars</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{starAverage}}/5 <i class="fa-regular fa-star"></i></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3 span">
+              <p class="mb-0">City</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0" *ngIf="user.address?.city">{{user.address.city}}</p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- ads -->
+
+<h5 class="m-5 display-6 text-center">Ads</h5>
+<div class="container card-container mt-2">
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-12" *ngFor="let item of ads">
+      <div class="card card-body h-100">
+      <div class="d-flex align-items-center username-container my-2">
+        <img class="w-25 rounded-circle" src="{{item.user.profile.img}}" alt="">
+        <p class="username-link m-0">
+          <a href="#" [routerLink]="['/profile/', item.user.username]"
+            *ngIf="item.user.fullname">{{item.user.username}}</a>
+        </p>
+      </div>
+        <img src="{{item.img}}" alt="Photo">
+        <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
+        <p class="card-text">{{item.category | lowercase}}</p>
+        <p class="card-text" *ngIf="item.expirationDate">
+          <small class="text-muted">Expiration date: <br> {{item.expirationDate | date:'fullDate'}}</small>
+        </p>
+        <p class="card-text">
+
+          <button type="button" class="btn" [routerLink]="['/edit-ad', item.id]" *ngIf="checkLogged()"><i class="fa-regular fa-pen-to-square"></i></button>
+          <button type="button" class="btn ms-2" (click)="deleteAd(item.id)"><i class="fa-sharp fa-solid fa-trash"></i></button>
+        <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Favourite ads -->
+<section *ngIf="favourites.length>0">
+<h5 class="m-5 display-6 text-center">Favourite Ads</h5>
+<div class="container card-container mt-2">
+
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-12" *ngFor="let item of favourites">
+      <div class="card card-body h-100">
+      <div class="d-flex align-items-center username-container my-2">
+        <img class="w-25 rounded-circle" src="{{item.user.profile.img}}" alt="">
+        <p class="username-link m-0">
+          <a href="#" [routerLink]="['/profile/', item.user.username]"
+            *ngIf="item.user.fullname">{{item.user.username}}</a>
+        </p>
+      </div>
+        <img src="{{item.img}}" alt="Photo">
+        <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
+        <p class="card-text">{{item.category | lowercase}}</p>
+        <p class="card-text">
+          <small class="text-muted">{{item.expirationDate | date:'fullDate'}}</small>
+        </p>
+        <p class="card-text">
+        <button type="button" class="btn ms-2" (click)="removeLike(item.id)"><i class="fa-sharp fa-solid fa-trash"></i></button>
+        <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- reviews -->
+<h5 class="m-5 display-6 text-center">Ratings and Reviews</h5>
+<div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page"  *ngIf="!checkLogged()">
+  <h5 class="mb-4">Leave Comment</h5>
+  <p class="mb-2">Rate the Place</p>
+  <form (ngSubmit)="addReview(form)" #form="ngForm">
+
+    <div class="form-group">
+      <label for="inputTitle">Title</label>
+      <input type="text" id="inputTitle" class="form-control" name="title" ngModel>
+    </div>
+    <div class="form-group">
+      <label>Your Comment</label>
+      <textarea class="form-control" name="description" ngModel></textarea>
+    </div>
+
+    <!-- star rating -->
+    <div class="rating-wrapper my-4">
+
+      <!-- star 5 -->
+      <input type="radio" id="5-star-rating" name="star" value="5" ngModel>
+      <label for="5-star-rating" class="star-rating">
+        <i class="fas fa-star d-inline-block"></i>
+      </label>
+
+      <!-- star 4 -->
+      <input type="radio" id="4-star-rating" name="star" value="4" ngModel>
+      <label for="4-star-rating" class="star-rating star">
+        <i class="fas fa-star d-inline-block"></i>
+      </label>
+
+      <!-- star 3 -->
+      <input type="radio" id="3-star-rating" name="star" value="3" ngModel>
+      <label for="3-star-rating" class="star-rating star">
+        <i class="fas fa-star d-inline-block"></i>
+      </label>
+
+      <!-- star 2 -->
+      <input type="radio" id="2-star-rating" name="star" value="2" ngModel>
+      <label for="2-star-rating" class="star-rating star">
+        <i class="fas fa-star d-inline-block"></i>
+      </label>
+
+      <!-- star 1 -->
+      <input type="radio" id="1-star-rating" name="star" value="1" ngModel>
+      <label for="1-star-rating" class="star-rating star">
+        <i class="fas fa-star d-inline-block"></i>
+      </label>
+    </div>
+    <div>
+    <button class="btn btn-primary btn-sm review-btn" type="submit"> Submit Comment </button>
+  </div>
+  </form>
+</div>
+
+
+
+<section *ngIf="user?.profile">
+  <div class=" container reviews-members pt-4 pb-4">
+    <div class="media d-flex m-3" *ngFor="let item of reviews">
+      <a href="#"><img alt="profile-image" src="{{item.user.profile.img}}" class="user-profile mr-3 rounded-pill"
+          style="max-width: 30px;"></a>
+      <div class="media-body">
+        <div class="reviews-members-header">
+          <a [routerLink]="['/profile', item.user.username]"><p class="username text-gray">&nbsp; {{item.user.username}}</p></a>
+        </div>
+        <div class="reviews-members-body">
+          <p>{{item.date | date:'fullDate'}}</p>
+          <p>{{item.title}} </p>
+          <p>{{item.description}}</p>
+        </div>
+        <div class="reviews-members-body">
+          <span *ngFor="let item of [].constructor(item.stars)"><i class="fa-regular fa-star"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

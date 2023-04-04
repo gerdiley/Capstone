@@ -1,0 +1,23 @@
+<div class="container text-center m-3">
+  <h2>{{messages[0].recipient.fullname}}</h2>
+</div>
+<div class="container mt-4 mb-4">
+  <div class="messages" id="messages">
+    <div *ngFor="let item of messages">
+      <p *ngIf="loggedUser?.id == item.sender?.id" class="text-end sender">
+        <span class="badge fs-5 text-wrap">{{item.sender.username}}: {{item.text}}</span>
+      </p>
+      <p *ngIf="loggedUser?.id != item.sender?.id" class="text-start recipient">
+        <span class="badge fs-5 text-wrap">{{item.sender.username}}: {{item.text}}</span>
+      </p>
+    </div>
+  </div>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form d-flex align-items-center">
+    <div class="form-group w-75">
+      <input type="text" class="form-control w-100" id="city" placeholder="Message" name="text" ngModel>
+    </div>
+
+    <button class="btn btn-primary ms-1" type="submit">Send</button>
+  </form>
+
+</div>

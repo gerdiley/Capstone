@@ -1,0 +1,34 @@
+// # Header
+.navbar {
+  background-color: #2d6760;
+  padding: 1em;
+  position: sticky;
+  top: 0;
+
+  .fa-bars,
+  a,
+  .nav-item {
+    color: #d2ece9;
+  }
+
+  .fa-bars,
+  a:hover {
+    color: #fff;
+    ;
+  }
+
+  .logout {
+    color: #c13442;
+    border: 2px solid #c13442;
+  }
+
+  .logout:hover {
+    background-color: #c13442;
+    color: #d2ece9;
+  }
+
+  .login{
+    color: #d2ece9;
+    border: 1px solid #d2ece9
+  }
+}

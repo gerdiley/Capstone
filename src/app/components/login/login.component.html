@@ -1,0 +1,24 @@
+<h1 class="text-center m-5">Login</h1>
+<div class="register container-fluid d-flex justify-content-center">
+  <form class="form" #form = "ngForm" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="title" placeholder="" name="username" username required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="title" placeholder="" name="password" password required ngModel>
+    </div>
+    <button class="btn btn-primary mt-3 w-100" type="submit">Sign In</button>
+    <button type="button" class="btn btn-primary me-3 mt-2 w-100" [routerLink]="['/register']">
+      Sign up for free
+    </button>
+    <div class="alert alert-danger text-center mt-5" role="alert" *ngIf="errorStatus">
+      <p *ngIf="errorStatus == 401" >Bad Credentials</p>
+      <p *ngIf="errorStatus == 500">Bunned User!</p>
+    </div>
+  </form>
+
+</div>
+
