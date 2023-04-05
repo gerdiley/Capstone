@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   togglePag: boolean = false;
   topAds: Ad[] = []
   pageSelector: boolean = true;
+  city!: string;
+
 
   constructor(private adSrv: AdService, private datePipe: DatePipe, private router:Router, private authSrv: AuthService) { }
 
@@ -47,6 +49,15 @@ export class HomeComponent implements OnInit {
         }
        }
     }
+
+
+    )
+  }
+
+  getAllByCity(){
+    this.adSrv.getByCity(this.city).subscribe(data=>{
+      this.ad = data
+    }
     )
   }
 
@@ -62,13 +73,35 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getFood(category: string) {
+  getByCategory(category: string) {
     this.adSrv.getByCategory(category).subscribe(data => {
       console.log(data);
       this.ad = data
     });
     this.pageSelector = false;
   }
+
+  getByCategoryAndCity(category: string, city: string) {
+    this.ad = [];
+    this.adSrv.getByCategory(category).subscribe(data => {
+      // this.ad = data;
+     data.forEach(e=>{
+      if(e.user.address.city == city){
+        this.ad.push(e)
+      }
+    })
+    });
+
+
+    this.pageSelector = false;
+  }
+
+  addCity(e: any){
+    this.city = e.target.value
+    console.log(this.city);
+
+  }
+
 
   getTops(){
     this.adSrv.getTops().subscribe(data=>{

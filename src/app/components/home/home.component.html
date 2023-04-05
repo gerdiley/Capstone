@@ -44,7 +44,7 @@
       <p> Join our food sharing community today and start spreading joy and connection through the love of food! <br>
         Together, let's make the world a happier and more delicious place.
       </p>
-      <a class="cta-btn" href="#" [routerLink]="['/about']">Our Goals</a>
+      <a class="cta-btn" [routerLink]="['/about']">Our Goals</a>
     </div>
 
   </div>
@@ -59,18 +59,31 @@
 
 
   <!-- FILTERS -->
+
+  <form action="" class="d-flex w-25 m-auto" #filterCity = "ngForm">
+    <select class="form-select" aria-label="Default select example" (change)="addCity($event)">
+      <option selected value="">All Cities</option>
+      <option value="Milan">Milan</option>
+      <option value="Rome">Rome</option>
+      <option value="Naples">Naples</option>
+    </select>
+  </form>
+
   <div class="container portfolio">
 
     <div class="row">
       <div class="col-lg-12">
-        <ul id="portfolio-flters">
-          <li (click)="getData(0)">All</li>
-          <li (click)="getFood('FOOD')">Food</li>
-          <li (click)="getFood('NONFOOD')">Non-Food</li>
+        <ul class="portfolio-flters">
+          <li (click)="this.city ? getAllByCity() : getData(0)">All</li>
+          <li (click)="this.city ? getByCategoryAndCity('FOOD', this.city) : getByCategory('FOOD') ">Food</li>
+          <li (click)="this.city ? getByCategoryAndCity('NONFOOD', this.city): getByCategory('NONFOOD')">Non-Food</li>
         </ul>
       </div>
     </div>
   </div>
+
+
+
 
 
   <!-- BARRA DI RICERCA -->
@@ -92,7 +105,7 @@
   </div>
 
   <div *ngIf="ad.length == 0" class="alert alert-danger w-50 p-1 text-center" role="alert" id="alertNoData">
-    No results!
+    No results!w
   </div>
 
 

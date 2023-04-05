@@ -33,6 +33,10 @@ export class AdService {
     return this.http.get<Ad[]>(this.url + `api/ads/category?category=${category}`)
   }
 
+  getByCity(city:string){
+    return this.http.get<Ad[]>(this.url + `api/ads/city?city=${city}`)
+  }
+
   getFavouriteAdsByProfileId(id: number){
     return this.http.get<Ad[]>(this.url + "api/ads/like/" + id)
   }

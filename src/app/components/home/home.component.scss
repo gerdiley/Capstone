@@ -120,14 +120,14 @@
   margin-top: 3rem;
 }
 
-.portfolio #portfolio-flters {
+.portfolio .portfolio-flters {
   padding: 0;
   margin: 0;
   list-style: none;
   text-align: center;
 }
 
-.portfolio #portfolio-flters li {
+.portfolio .portfolio-flters li {
   cursor: pointer;
   margin: 0 15px 15px 0;
   display: inline-block;
@@ -142,13 +142,22 @@
   transition: all 0.3s ease-in-out;
 }
 
-.portfolio #portfolio-flters li:hover {
+.portfolio .portfolio-flters li:hover {
   background: #70b9b0;
   color: #fff;
 }
 
-.portfolio #portfolio-flters li:last-child {
+.portfolio .portfolio-flters li:last-child {
   margin-right: 0;
+}
+
+.form-select:focus{
+  color: #505a59 !important;
+  background-color: #FFF !important;
+  border-color: #70b9b0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
 }
 
 // cards
