@@ -111,15 +111,17 @@
             </p>
           </div>
           <img src="{{item.img}}" alt="Photo">
-          <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
-          <p class="card-text">
-            <span class="badge badge-success">{{item.category | lowercase}}</span>
-          </p>
-          <p class="card-text" *ngIf="item.expirationDate">
-            <small class="text-muted">Expiration date: <br>{{item.expirationDate | date:'fullDate'}}</small>
-          </p>
-          <p class="card-text">
-            <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
+            <h5 class="card-title mt-3 mb-3">{{item.title}}</h5>
+            <p class="card-text">
+              <span class="badge"
+                [ngClass]="{'badge-info' : item.category == 'NONFOOD', 'badge-success' : item.category == 'FOOD'}">{{item.category
+                | lowercase}}</span>
+            </p>
+            <p class="card-text" *ngIf="item.expirationDate">
+              <small class="text-muted">Expiration date: <br>{{item.expirationDate | date:'fullDate'}}</small>
+            </p>
+            <p class="card-text">
+              <a href="#" class="stretched-link" [routerLink]="['/ads/', item.id]"></a>
         </div>
       </div>
     </div>
