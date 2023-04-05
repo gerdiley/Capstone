@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllByCity(){
+    this.pageSelector =false
     this.adSrv.getByCity(this.city).subscribe(data=>{
       this.ad = data
     }
@@ -82,6 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   getByCategoryAndCity(category: string, city: string) {
+    this.pageSelector =false
     this.ad = [];
     this.adSrv.getByCategory(category).subscribe(data => {
       // this.ad = data;

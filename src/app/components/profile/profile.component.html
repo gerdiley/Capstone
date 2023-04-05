@@ -98,7 +98,7 @@
         <img class="w-25 rounded-circle" src="{{item.user.profile.img}}" alt="">
         <p class="username-link m-0">
           <a href="#" [routerLink]="['/profile/', item.user.username]"
-            *ngIf="item.user.fullname">{{item.user.username}}</a>
+            *ngIf="item.user.fullname">&nbsp;{{item.user.username}}</a>
         </p>
       </div>
         <img src="{{item.img}}" alt="Photo">
