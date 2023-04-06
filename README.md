@@ -1,27 +1,51 @@
-# Capstone
+**README for Angular and Spring Project: riCibo App** 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
+This project is an implementation of a web application designed to enable people to share their excess food with those in need. The application has been built using Angular and Spring frameworks.
 
-## Development server
+**Features**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- User registration and login system
+- User profiles to display their food donations
+- Donation creation, editing, and deletion
+- Search functionality to find donations
+- Messaging system for users to communicate with each other
 
-## Code scaffolding
+**Technologies Used**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 14
+- Spring Boot 2.7.9
+- PostgreSQL database
+- Firebase Storage
+- MdBootstrap
 
-## Build
+**Requirements**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js version 18.12.0
+- Angular CLI version 12 or higher
+- Java 17
+- PgAdmin or similar
 
-## Running unit tests
+**Getting Started**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository to your local machine.
+2. Open the project folder in your IDE of choice.
+3. Create a new PostgreSQL database
+4. Configure the PostgreSQL database connection properties in the application.properties file located in the src/main/resources directory.
+5. Build and run the Spring Boot application.
+6. Navigate to the client folder and install the required dependencies using npm install.
+7. Start the Angular development server using ng serve.
+8. Open your web browser and navigate to http://localhost:4200.
 
-## Running end-to-end tests
+**Usage**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Upon launching the application, users will be prompted to register or login. Once logged in, users can create and manage their food donations. The search functionality allows users to find donations. Users can also communicate with each other using the messaging system.
 
-## Further help
+**License**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+No License
+
+**Acknowledgments**
+- [Angular Documentation](https://angular.io/docs)
+- [Spring Boot Documentation](https://spring.io/projects/spring-boot)
+- [Firebase Documentation](https://firebase.google.com/docs?hl=it)
+- [MdBootstrap Documentation](https://mdbootstrap.com/docs/angular/)
