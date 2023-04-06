@@ -27,7 +27,7 @@ This project is an implementation of a web application designed to enable people
 
 **Getting Started**
 
-1. Clone the repository to your local machine.
+1. Clone the repository to your local machine. ([backend application](https://github.com/gerdiley/Capstone-Backend))
 2. Open the project folder in your IDE of choice.
 3. Create a new PostgreSQL database
 4. Configure the PostgreSQL database connection properties in the application.properties file located in the src/main/resources directory.
