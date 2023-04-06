@@ -25,6 +25,9 @@ export class UserService {
   getUser1(username:string){
     return this.http.get<UserProfile>(this.url + "profiles/username1?username=" + username)
   }
+  getUserById(id:number){
+    return this.http.get<UserProfile>(this.url + "profiles/" + id)
+  }
 
   // PUT to edit the profile
   editProfile(id: number, user: {}){

@@ -1,14 +1,14 @@
-<div class="container text-center m-3">
-  <h2>{{messages[0].recipient.fullname}}</h2>
-</div>
+
+  <h2 class="text-center mt-3">{{user.fullname}}</h2>
+
 <div class="container mt-4 mb-4">
-  <div class="messages" id="messages">
+  <div class="messages mb-3" id="messages">
     <div *ngFor="let item of messages">
       <p *ngIf="loggedUser?.id == item.sender?.id" class="text-end sender">
-        <span class="badge fs-5 text-wrap">{{item.sender.username}}: {{item.text}}</span>
+        <span class="badge fs-5 text-wrap"> {{item.text}}</span>
       </p>
       <p *ngIf="loggedUser?.id != item.sender?.id" class="text-start recipient">
-        <span class="badge fs-5 text-wrap">{{item.sender.username}}: {{item.text}}</span>
+        <span class="badge fs-5 text-wrap"> {{item.text}}</span>
       </p>
     </div>
   </div>

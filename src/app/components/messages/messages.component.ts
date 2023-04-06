@@ -20,6 +20,7 @@ export class MessagesComponent implements OnInit {
   messages: Message[] = []
   id!: number
   loggedUser!: UserProfile
+  user!: UserProfile;
   constructor(private messageSrv: MessageService, private route:ActivatedRoute, private userSrv : UserService) { }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class MessagesComponent implements OnInit {
     // this.getReceivedMessage()
     this.getAllMessages()
     this.getLoggedUser()
+    this.getUserById()
   }
 
   getAllMessages() {
@@ -41,6 +43,16 @@ export class MessagesComponent implements OnInit {
     this.userSrv.getUser().subscribe(data=> this.loggedUser =data)
   }
 
+  getUserById(){
+    this.userSrv.getUserById(this.id).subscribe(data=>{
+      this.user = data;
+      console.log(data);
+
+    }
+    )
+  }
+
+
   onSubmit(f: NgForm){
     const text = f.value.text
     this.messageSrv.sendMessage(this.id, {text: text}).subscribe(data=>{
@@ -49,5 +61,6 @@ export class MessagesComponent implements OnInit {
     }
     )
   }
+
 
 }
