@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,10 +15,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  // ON SUBMIT
+
   onSubmit(f: NgForm){
+
+    // get form values
     const username = f.value.username;
     const password = f.value.password;
 
+      // subscribe
       this.authSrv.login({username: username, password: password}).subscribe(data=> {
         this.authSrv.createUser(data.expirationDate, data.roles, data.token, data.type, data.username);
         localStorage.setItem("user", JSON.stringify(this.authSrv.user))

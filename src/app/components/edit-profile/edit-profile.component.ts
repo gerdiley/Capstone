@@ -31,24 +31,29 @@ export class EditProfileComponent implements OnInit {
     this.getUserDetail();
   }
 
+   // ON SUBMIT
+
   updateProfile(f: NgForm) {
 
     console.log(this.path);
 
+    // if there is a file
     if(this.path){
+      // Upload the image on firebase and get the url
       this.af.upload("/file" + Math.random(), this.path).then(d => {
         d.ref.getDownloadURL().then(data => {
           this.url = data;
           console.log(this.url);
           this.clicked = true;
           const img = this.url
-
+          //  get form values
           const username = f.value.username
           const city = f.value.city
           const postalCode = f.value.postalCode
           const street = f.value.street
           const email = f.value.email
 
+          // subscribe
           this.address = {
             city: city,
             postalCode: postalCode,
@@ -69,6 +74,7 @@ export class EditProfileComponent implements OnInit {
           this.router.navigate(['/home'])
         })
       })
+      // if there is no file
     } else{
       this.clicked = true;
           const img = ""
@@ -100,6 +106,7 @@ export class EditProfileComponent implements OnInit {
 
   }
 
+  // GET USER DETAILS
   getUserDetail(){
     this.userSrv.getUser().subscribe(data=>{
       this.userDetails = data;
@@ -108,6 +115,7 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
+  // ASSIGN THE UPLOADED FILE TO A VARIABLE
   upload($event: any) {
     this.path = $event.target.files[0]
   }

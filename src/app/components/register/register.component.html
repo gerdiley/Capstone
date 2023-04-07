@@ -1,6 +1,27 @@
 <h1 class="text-center m-3">Sign Up</h1>
 <div class="register container-fluid d-flex justify-content-center align-items-center">
   <form class="form" #form = "ngForm" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group">
+      <label for="fullname">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="" name="fullname" fullname required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="" name="username" username required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="" name="email" email required ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="" name="password" password required ngModel>
+    </div>
+
+<!--
+
+
     <mdb-form-control>
       <input mdbInput type="text" id="form1" class="form-control mt-2" fullname required ngModel name="fullname" />
       <label mdbLabel class="form-label" for="form1">Nome ex(Mario Rossi)</label>
@@ -16,7 +37,7 @@
     <mdb-form-control>
       <input mdbInput type="password" id="form1" class="form-control mt-2" password required ngModel name="password" />
       <label mdbLabel class="form-label" for="form1">Password</label>
-    </mdb-form-control>
+    </mdb-form-control> -->
     <button class="btn btn-primary mt-2 w-100" type="submit">Sign Up</button>
   </form>
 </div>

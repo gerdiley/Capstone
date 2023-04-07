@@ -1,9 +1,9 @@
+<!-- ===================== HOMEPAGE ==================== -->
+
 <!-- carousel -->
 <div id="carouselExampleCaptions" class="carousel slide carousel-fade mb-4 " data-mdb-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active first-carousel-item">
-      <!-- <img src="https://cdn.pixabay.com/photo/2017/06/06/22/37/italian-cuisine-2378729_1280.jpg" class="d-block w-100"
-        alt="Wild Landscape" /> -->
       <div class="mask" style="background-color: rgba(112, 185, 176, 0.85)"></div>
       <div class="carousel-caption mb-5">
         <h1 class="mb-4">
@@ -24,18 +24,17 @@
     </div>
   </div>
 </div>
-<!-- tops carousel -->
 
+
+<!-- tops carousel -->
 <div class="section-title m-5">
   <h1 class="text-center display-6">Most popular</h1>
 </div>
 <app-slider-top></app-slider-top>
 
 
-
-
-<!-- CALL TO ACTION -->
 <!-- ======= Call To Action Section ======= -->
+
 <section class="call-to-action mt-5">
   <div class="container">
 
@@ -48,9 +47,9 @@
     </div>
 
   </div>
-</section><!-- End Call To Action Section -->
+</section>
 
-<!-- PRODUCTS -->
+<!-- ************* PRODUCTS *****************-->
 
 <section>
   <div class="section-title m-5">
@@ -58,7 +57,7 @@
   </div>
 
 
-  <!-- FILTERS -->
+  <!-- ============== FILTERS ==============-->
 
   <form action="" class="d-flex w-25 m-auto" #filterCity = "ngForm">
     <select class="form-select" aria-label="Default select example" (change)="addCity($event)">
@@ -86,16 +85,13 @@
 
 
 
-  <!-- BARRA DI RICERCA -->
+  <!-- ====================== SEARCH BAR =================  -->
+
   <div class="d-flex justify-content-center align-items-center search-container">
     <form class="form d-flex input-group w-auto justify-content-center m-4" #form1="ngForm"
       (ngSubmit)="onSubmit(form1)">
       <input id="searchBar" type="search" class="form-control border rounded shadow" placeholder="Search"
         aria-label="Search" aria-describedby="search-addon" (input)="onSubmit2($event)" name="search" search ngModel />
-
-      <!-- <button type="submit" class="input-group-text border rounded ms-1 shadow searchIcon" id="search-addon">
-        <i class="fas fa-search"></i>
-      </button> -->
     </form>
     <div>
       <button type="button" class="btn btn-floating ms-1 shadow search-icon" [routerLink]="['/add']" id="addIcon">
@@ -109,7 +105,7 @@
   </div>
 
 
-  <!-- cards -->
+  <!-- ==================== cards ======================== -->
 
   <div class="container card-container mt-2 mb-4">
 

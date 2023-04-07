@@ -25,12 +25,13 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.id =this.route.snapshot.params['id']
-    // this.getSentMessage()
-    // this.getReceivedMessage()
     this.getAllMessages()
     this.getLoggedUser()
     this.getUserById()
   }
+
+
+  // GET ALL MESSAGES
 
   getAllMessages() {
     this.messageSrv.getAllMessages(this.id).subscribe(data => {
@@ -39,9 +40,13 @@ export class MessagesComponent implements OnInit {
     })
   }
 
+  // GET LOGGED USER
+
   getLoggedUser(){
     this.userSrv.getUser().subscribe(data=> this.loggedUser =data)
   }
+
+  // GET USER BY ID
 
   getUserById(){
     this.userSrv.getUserById(this.id).subscribe(data=>{
@@ -52,6 +57,8 @@ export class MessagesComponent implements OnInit {
     )
   }
 
+
+  // SEND MESSAGE
 
   onSubmit(f: NgForm){
     const text = f.value.text

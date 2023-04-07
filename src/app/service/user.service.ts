@@ -11,20 +11,25 @@ export class UserService {
   url = "http://localhost:8081/";
   constructor(private http: HttpClient) { }
 
+  //  get all users
   getAllUsers(){
     return this.http.get<UserProfile[]>(this.url + "users")
   }
 
+  // swith user status (ban)
   switchStatus(id: number, user: {}){
     return this.http.put<UserProfile>(this.url + "users/" + id, user)
   }
 
+  // get logged user
   getUser(){
     return this.http.get<UserProfile>(this.url + "profiles/username")
   }
+  // get user by username
   getUser1(username:string){
     return this.http.get<UserProfile>(this.url + "profiles/username1?username=" + username)
   }
+  // get user by id
   getUserById(id:number){
     return this.http.get<UserProfile>(this.url + "profiles/" + id)
   }

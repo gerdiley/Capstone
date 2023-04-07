@@ -20,10 +20,12 @@ export class AddAdsComponent implements OnInit {
     this.clicked = false;
   }
 
+  // ON SUBMIT
+
   onSubmit(f: NgForm) {
-
-
     console.log(this.path);
+
+    // Upload the image on firebase and get the url
     this.af.upload("/file" + Math.random(), this.path).then(d => {
       d.ref.getDownloadURL().then(data => {
         this.url = data;
@@ -31,12 +33,14 @@ export class AddAdsComponent implements OnInit {
 
         this.clicked = true;
 
+        //  get form values
         const title = f.value.title
         const expDate = f.value.expDate
         const description = f.value.description
         const category = f.value.category
-        // const img = f.value.image
         const img = this.url;
+
+        // subscribe
         this.adSrv.add({
           title: title,
           expirationDate: expDate,
@@ -54,15 +58,10 @@ export class AddAdsComponent implements OnInit {
   }
 
 
-
+  // ASSIGN THE UPLOADED FILE TO A VARIABLE
 
   upload($event: any) {
     this.path = $event.target.files[0]
     console.log(this.path)
-  }
-
-  arrivoData($event:any){
-    console.log($event);
-
   }
 }

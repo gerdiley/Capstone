@@ -9,7 +9,6 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MessagesComponent } from './components/messages/messages.component';
-import { MyAdsComponent } from './components/my-ads/my-ads.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './service/auth.guard';
@@ -41,16 +40,9 @@ const routes: Routes = [
   {
     path: "ads/:id",
     component: AdDetailsComponent,
-    // canActivate: [
-    //   AuthGuard
-    // ]
-  },
-  {
-    path: "my-ads",
-    component: MyAdsComponent,
-    // canActivate: [
-    //   AuthGuard
-    // ]
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: "profile/:username",
@@ -83,9 +75,9 @@ const routes: Routes = [
   {
     path: "messages/:id",
     component: MessagesComponent,
-    // canActivate: [
-    //   AuthGuard
-    // ]
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: "about",

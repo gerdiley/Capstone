@@ -24,23 +24,28 @@ export class EditAdComponent implements OnInit {
     this.id = this.route.snapshot.params['id']
     this.getAdById();
   }
+
+  // ON SUBMIT
+
   editAd(f: NgForm) {
 
     console.log(this.path);
-
+    // if there is a file
     if(this.path){
+      // Upload the image on firebase and get the url
       this.af.upload("/file" + Math.random(), this.path).then(d => {
         d.ref.getDownloadURL().then(data => {
           this.url = data;
           console.log(this.url);
           this.clicked = true
-
+          //  get form values
           const title = f.value.title
           const description = f.value.description
           const img = this.url
           const category = f.value.category
           const expirationDate = f.value.expirationDate
 
+          // subscribe
           this.ad = {
             title: title,
             description: description,
@@ -54,7 +59,7 @@ export class EditAdComponent implements OnInit {
           )
         })
       })
-
+      // if there is no file
     } else {
       this.clicked = true
 
@@ -78,6 +83,7 @@ export class EditAdComponent implements OnInit {
           )
     }
   }
+  //  GET AD BY ID
 
   getAdById(){
     this.adSrv.getById(this.id).subscribe(
@@ -85,6 +91,8 @@ export class EditAdComponent implements OnInit {
       this.preAd = data
     )
   }
+
+  // ASSIGN THE UPLOADED FILE TO A VARIABLE
 
   upload($event: any) {
     this.path = $event.target.files[0]

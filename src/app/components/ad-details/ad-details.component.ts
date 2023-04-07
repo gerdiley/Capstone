@@ -25,6 +25,8 @@ export class AdDetailsComponent implements OnInit {
     this.getDetails();
   }
 
+  // GET DETAILS
+
   getDetails(){
     this.adSrv.getById(this.id).subscribe(data=> {
     console.log(data)
@@ -32,16 +34,22 @@ export class AdDetailsComponent implements OnInit {
     )
   }
 
+  // PUT LIKE
+
   putLike(){
     this.adSrv.putLike(this.id, {}).subscribe(data=> {console.log(data)
     this.getDetails()})
   }
+
+  // DELETE AD
 
   deleteAd(){
     this.adSrv.delete(this.id).subscribe(data=> {console.log(data)
     this.router.navigate(['/home'])}
     )
   }
+
+  // CHECK IF THE USER IS THE AUTHENTICATED USER
 
   checkLogged(){
     this.loggedUser = JSON.parse(localStorage.getItem('user')!)

@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit {
     this.getUsers()
   }
 
+  //  GET ALL USERS
+
   getUsers(){
     this.userSrv.getAllUsers().subscribe(data=>
       {
@@ -26,6 +28,9 @@ export class DashboardComponent implements OnInit {
         console.log(data);
       })
   }
+
+  // SWITCH STATUS OF THE USER
+
   switchStatus(id: number){
     this.userSrv.switchStatus(id, {}).subscribe(data=>
       console.log(data)

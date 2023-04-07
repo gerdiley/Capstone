@@ -18,13 +18,6 @@ export class MessageService {
     return this.http.get<Message[]>(this.url + "chat/all?rec_id=" + id);
   }
 
-  getSentMessage(rec_id:number){
-    return this.http.get<Message[]>(this.url + "chat/sent?rec_id="+ rec_id)
-  }
-  getReceivedMessage(sender_id:number){
-    return this.http.get<Message[]>(this.url + "chat/received?sender_id="+ sender_id)
-  }
-
   sendMessage(rec_id:number, message: {}){
     return this.http.post(this.url + "chat/" + rec_id, message);
   }

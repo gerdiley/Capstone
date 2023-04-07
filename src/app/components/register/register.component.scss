@@ -1,5 +1,11 @@
-h1{
-  font-weight: 300;
+
+.form-control:focus{
+  color: #505a59 !important;
+  background-color: #FFF !important;
+  border-color: #70b9b0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
 }
 
 .btn{
@@ -15,5 +21,7 @@ h1{
   background: #92cac3;
 }
 
-
+.register{
+  height: 60vh;
+}
 

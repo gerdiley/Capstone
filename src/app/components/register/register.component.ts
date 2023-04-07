@@ -15,12 +15,17 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // ON SUBMIT
+
   onSubmit(form: NgForm){
+
+    // get form values
     const fullname = form.value.fullname;
     const username = form.value.username;
     const email = form.value.email;
     const password = form.value.password;
 
+    // subscribe
     this.authSrv.signUp({fullname: fullname, username: username, email: email, password: password}).subscribe(data => console.log(data));
     this.router.navigate(['/login/'])
   }

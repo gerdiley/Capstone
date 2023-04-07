@@ -20,14 +20,12 @@ export class NavbarComponent implements OnInit{
   logged: boolean = false;
   loginStatus$!: Observable<boolean>;
   notifications: Notification[] = []
-  // username$!: Observable<string | null>
 
   username!: string;
   username$ = this.authSrv.username$
 
   timeInterval!: Subscription
 
-  // notificationSub = new BehaviorSubject<Notification[]>(this.notifications);
   notificationObs$ = this.messageSrv.notificationSub.asObservable();
 
   constructor(private userSrv: UserService, private authSrv: AuthService, private router: Router, private messageSrv: MessageService) {
@@ -44,29 +42,31 @@ export class NavbarComponent implements OnInit{
     }
     )
 
-    // this.timeInterval = interval(3000).pipe(
-    //   startWith(0),
-    //   switchMap(() => this.messageSrv.getNotification())
-    // ).subscribe(data => this.notifications = data)
+    // POLLING FOR NOTIFICATIONS
+    this.timeInterval = interval(3000).pipe(
+      startWith(0),
+      switchMap(() => this.messageSrv.getNotification())
+    ).subscribe(data => this.notifications = data)
 
 
-
+    // CHECK IF LOGGED
     if (localStorage.getItem('user')) {
       this.authSrv.isLoggedin.next(true);
-    }
-    if(localStorage.getItem('user')){
       this.getLoggedUser()
     }
-
   }
 
+  // CHECK IF LOGGED
   islogged() {
     return localStorage.getItem('user');
   }
 
+  // LOGOUT
   logout() {
     this.authSrv.logout();
   }
+
+  // GET LOGGED USER
 
   getLoggedUser() {
     this.userSrv.getUser().subscribe(data => {
@@ -74,6 +74,7 @@ export class NavbarComponent implements OnInit{
     })
   }
 
+  // CHECK IF ADMIN
   isAdmin() {
 
     this.user?.roleList.forEach(i => {
@@ -85,7 +86,10 @@ export class NavbarComponent implements OnInit{
     })
     return this.isAdminB
   }
-// --------Notifiche--------
+
+
+
+// -------- NOTIFICATIONS --------
 
   getNotification(){
     this.messageSrv.getNotification().subscribe(data=>{

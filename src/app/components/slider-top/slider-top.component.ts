@@ -16,7 +16,7 @@ export class SliderTopComponent implements OnInit {
   }
 
 
-
+  // get tops
   getTops(){
     this.adSrv.getTops().subscribe(data=>{
       console.log(data);

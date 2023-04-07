@@ -28,7 +28,6 @@ import { AddAdsComponent } from './components/add-ads/add-ads.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { AdDetailsComponent } from './components/ad-details/ad-details.component';
-import { MyAdsComponent } from './components/my-ads/my-ads.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EditAdComponent } from './components/edit-ad/edit-ad.component';
@@ -52,7 +51,6 @@ import { SliderTopComponent } from './components/slider-top/slider-top.component
     AddAdsComponent,
     HomeComponent,
     AdDetailsComponent,
-    MyAdsComponent,
     ProfileComponent,
     EditProfileComponent,
     EditAdComponent,

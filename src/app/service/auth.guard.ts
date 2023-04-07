@@ -26,7 +26,6 @@ export class AuthGuard implements CanActivate {
         allowed.forEach(e =>{
           roles.forEach((r:any)=>{
             if(e == r){
-              console.log("match");
               this.match = true;
               return true
             } return
