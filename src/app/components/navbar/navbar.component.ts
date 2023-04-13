@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, interval, Observable, startWith, Subscription, switchMap } from 'rxjs';
 import { Notification } from 'src/app/model/notification';

@@ -70,7 +70,9 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit2(e:any) {
-    this.adSrv.getByTitle(e.target.value).subscribe(d => this.ad = d
+    this.adSrv.getByTitle(e.target.value).subscribe(d => {this.ad =d
+    console.log(this.ad);
+    }
     )
   }
 

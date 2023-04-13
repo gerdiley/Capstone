@@ -90,7 +90,7 @@
 
 <!--  ============ Favourite ads ============ -->
 
-<section *ngIf="favourites.length>0">
+<section *ngIf="favourites.length>0 && checkLogged()">
 <h5 class="m-5 display-6 text-center">Favourite Ads</h5>
 <div class="container card-container mt-2">
 
