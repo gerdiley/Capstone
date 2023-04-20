@@ -11,7 +11,6 @@ export class AdService {
   constructor(private http: HttpClient) { }
 
   // add an ad
-
   add(ad: {}){
     return this.http.post<Ad>(this.url + "api/ads", ad)
   }
